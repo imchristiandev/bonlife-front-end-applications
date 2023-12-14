@@ -11,6 +11,7 @@ const CSS_HANDLES = [
   'product-summary__section',
   'product-summary__section--image',
   'product-summary__section--name',
+  'product-summary__section--lowPrice',
   'product-summary__section--hightPrice',
   'product-summary__section--normalPrice'
 ];
