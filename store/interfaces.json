@@ -9,5 +9,11 @@
         }
       }
     }
+  },
+  "promotion-popup": {
+    "component": "PromotionApp"
+  },
+  "special-suggested-products":{
+    "component": "SuggestedProducts"
   }
 }

@@ -1,0 +1,104 @@
+query ($id: ID!) {
+  product( identifier: { field: sku, value: $id } )
+    @context(provider: "vtex.search-graphql") {
+    link
+    linkText
+    categories
+    categoryId
+    brand
+    brandId
+    releaseDate
+    priceRange {
+      sellingPrice {
+        highPrice
+        lowPrice
+      }
+      listPrice {
+        highPrice
+        lowPrice
+      }
+    }
+    items {
+      itemId
+      ean
+      images {
+        cacheId
+        imageId
+        imageLabel
+        imageTag
+        imageUrl
+        imageText
+      }
+    }
+    linkText
+    productId
+    productName
+    description
+    properties {
+      originalName
+      name
+      values
+    }
+    propertyGroups {
+      name
+      properties
+    }
+    productReference
+    titleTag
+    metaTagDescription
+    recommendations {
+      buy {
+        productName
+        productId
+      }
+      view {
+        productId
+        productName
+      }
+      similars {
+        productName
+        productId
+      }
+    }
+    jsonSpecifications
+    benefits {
+      featured
+      id
+      name
+      teaserType
+      items {
+        benefitProduct {
+          productId
+          productName
+        }
+        benefitSKUIds
+        discount
+        minQuantity
+      }
+    }
+    specificationGroups {
+      originalName
+      name
+      specifications {
+        originalName
+        name
+        values
+      }
+    }
+    priceRange {
+      sellingPrice {
+        highPrice
+        lowPrice
+      }
+      listPrice {
+        highPrice
+        lowPrice
+      }
+    }
+    releaseDate
+    selectedProperties {
+      key
+      value
+    }
+  }
+}
