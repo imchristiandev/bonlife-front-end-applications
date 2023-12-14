@@ -11,7 +11,13 @@
     "store": "0.x"
   },
   "dependencies": {
-    "vtex.css-handles": "1.x"
+    "vtex.css-handles": "1.x",
+    "vtex.product-context": "0.x",
+    "vtex.search-graphql": "0.x",
+    "vtex.styleguide": "9.x",
+    "vtex.format-currency": "0.x",
+    "vtex.store-image": "0.x",
+    "vtex.order-items": "0.x"
   },
   "registries": [
     "smartcheckout"
