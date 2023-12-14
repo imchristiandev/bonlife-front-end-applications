@@ -1,0 +1,22 @@
+{
+  "definitions": {
+    "WhatsAppButton": {
+      "type": "array",
+      "title": "WhatsApp contact list",
+      "items": {
+        "properties": {
+          "phone": {
+            "title": "Teléfono",
+            "$ref": "app:vtex.native-types#/definitions/text",
+            "default": ""
+          },
+          "nameOfContact": {
+            "title": "Nombre de línea",
+            "$ref": "app:vtex.native-types#/definitions/text",
+            "default": ""
+          }
+        }
+      }
+    }
+  }
+}
