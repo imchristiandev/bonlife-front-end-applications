@@ -21,6 +21,7 @@ const ProductCard = ({ skuID, setTotal, selected }: any) => {
   const { handles } = useCssHandles(CSS_HANDLES)
 
   const [productImage, setProductImage] = useState<string>('')
+  const [stock, setStock] = useState<number>()
   const { loading, error, data: productData } = useQuery(GET_PRODUCT_BY_ID, {
     variables: {
       id: skuID
@@ -30,13 +31,14 @@ const ProductCard = ({ skuID, setTotal, selected }: any) => {
   useEffect(() => {
     setProductImage('')
     if (productData && !loading) {
-      let imageGroup = productData.product.items.filter((item: any) => skuID === item.itemId)
-      setProductImage(imageGroup[0].images[0].imageUrl)
+      let selectedItem = productData.product.items.filter((item: any) => skuID === item.itemId)
+      setStock(selectedItem[0].sellers[0].commertialOffer.AvailableQuantity)
+      setProductImage(selectedItem[0].images[0].imageUrl)
     }
   }, [productData, skuID])
 
   useEffect(() => {
-  }, [productImage])
+  }, [productImage, stock])
 
   useEffect(() => {
     const elements = document.querySelectorAll('.price-special');
@@ -50,45 +52,66 @@ const ProductCard = ({ skuID, setTotal, selected }: any) => {
         setTotal(suma)
       }
     }
+    setTimeout(() => {
+      if (productData && !loading) {
+        const elements = document.querySelectorAll('.bonlifeco-front-end-applications-0-x-suggested__complements--products-child');
+        elements.forEach((element) => {
+          const paragraph: any = element.querySelector('small');
+          if (paragraph && paragraph.textContent.toLowerCase().includes('sin stock')) {
+            const deleteButton: any = element.querySelector('.bonlifeco-front-end-applications-0-x-complements__products--delete');
+            if (deleteButton) {
+              deleteButton.click();
+            }
+          }
+        });
+      }
+    }, 1000);
   }, [productData, selected])
 
   return (
-    <div className={handles['product-summary']}>
+    <>
       {loading && <div><Spinner color="#b3b3b3" size={16} /></div>}
-      {error && <>Ocurrio un error al realizar la consulta</>}
+      {error && <small>Sin stock</small>}
       {
         !loading && productData
-        &&
-        <a className={handles['product-summary__section']}
-          href={'/' + productData.product.linkText + '/p?skuId=' + skuID}
-          target='_blank'>
-          <div className={handles['product-summary__section--image']}>
-            <Image
-              src={productImage}
-              maxHeight={400}
-              alt={productData.product.productName}
-              title={productData.product.productName}
-            />
+          ?
+          <div className={handles['product-summary']}>
+            <a className={handles['product-summary__section']}
+              href={'/' + productData.product.linkText + '/p?skuId=' + skuID}
+              target='_blank'>
+              <div className={handles['product-summary__section--image']}>
+                <Image
+                  src={productImage}
+                  alt={productData.product.productName}
+                  title={productData.product.productName}
+                />
+              </div>
+              <p className={handles['product-summary__section--name']}>
+                {productData.product.productName}
+              </p>
+              {
+                productData.product.priceRange.listPrice.highPrice !== productData.product.priceRange.sellingPrice.highPrice
+                &&
+                <p className={handles['product-summary__section--lowPrice']}>
+                  <FormattedCurrency value={productData.product.priceRange.listPrice.highPrice} />
+                </p>
+              }
+              <p className={handles['product-summary__section--normalPrice']}>
+                <FormattedCurrency value={productData.product.priceRange.sellingPrice.highPrice} />
+              </p>
+              <p style={{ display: 'none' }} className="price-special">
+                {productData.product.priceRange.sellingPrice.highPrice}
+              </p>
+              {
+                stock === 0
+                &&
+                <small>Sin stock</small>
+              }
+            </a>
           </div>
-          <p className={handles['product-summary__section--name']}>
-            {productData.product.productName}
-          </p>
-          {
-            productData.product.priceRange.listPrice.highPrice !== productData.product.priceRange.sellingPrice.highPrice
-            &&
-            <p className={handles['product-summary__section--lowPrice']}>
-              <FormattedCurrency value={productData.product.priceRange.listPrice.highPrice} />
-            </p>
-          }
-          <p className={handles['product-summary__section--normalPrice']}>
-            <FormattedCurrency value={productData.product.priceRange.sellingPrice.highPrice} />
-          </p>
-          <p style={{ display: 'none' }} className="price-special">
-            {productData.product.priceRange.sellingPrice.highPrice}
-          </p>
-        </a>
+          : null
       }
-    </div>
+    </>
   )
 }
 
