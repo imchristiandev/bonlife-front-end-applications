@@ -1,4 +1,9 @@
 {
-  "admin/test": "teste",
-  "store/test": "teste"
+  "admin/editor.whatsapp.title": "Botón de WhatsApp",
+  "admin/editor.whatsapp.description": "App que permitirá conectarte a WhatsApp directamente",
+  "admin/editor.whatsapp-logo.title": "Logo de WhatsApp",
+  "admin/editor.whatsapp-phone.title": "Teléfono a vincular",
+  "admin/editor.whatsapp-phone.description": "Agregue el teléfono que desea vincular al e-commerce",
+  "admin/editor.whatsapp-message.title": "Mensaje de WhatsApp",
+  "admin/editor.whatsapp-message.description": "Hola, me gustaría conocer más sobre Akaes"
 }

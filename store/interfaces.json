@@ -1,14 +1,6 @@
 {
-  "list-context.whatsapp-button": {
-    "component": "WhatsAppButton",
-    "allowed": "*",
-    "content": {
-      "properties": {
-        "contactGroup": {
-          "$ref": "app:bonlifeco.front-end-applications#/definitions/WhatsAppButton"
-        }
-      }
-    }
+  "whatsapp-button": {
+    "component": "WhatsAppButton"
   },
   "promotion-popup": {
     "component": "PromotionApp"

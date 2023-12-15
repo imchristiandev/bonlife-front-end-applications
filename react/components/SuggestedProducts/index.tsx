@@ -4,11 +4,11 @@ import { FormattedCurrency } from 'vtex.format-currency'
 import { useOrderItems } from 'vtex.order-items/OrderItems'
 // components
 import ProductCard from './ProductCard';
-// types 
+// types
 import { CustomProperty, FinalArray } from './types'
-// function 
+// function
 import { finalArray } from './helpers';
-// styles 
+// styles
 import { useCssHandles } from 'vtex.css-handles'
 
 const CSS_HANDLES = [
@@ -31,7 +31,7 @@ const SuggestedProducts = () => {
 
   const { handles } = useCssHandles(CSS_HANDLES)
 
-  const { product, selectedItem } = useProduct()
+  const { product, selectedItem }: any = useProduct()
   const { addItem } = useOrderItems()
 
   const [productSelected, setProductSelected] = useState<string>('')

@@ -1,4 +1,9 @@
 {
-  "admin/test": "test",
-  "store/test": "test"
+  "admin/editor.whatsapp.title": "WhatsApp Button",
+  "admin/editor.whatsapp.description": "App that will allow you to connect to WhatsApp directly",
+  "admin/editor.whatsapp-logo.title": "WhatsApp Logo",
+  "admin/editor.whatsapp-phone.title": "Phone to connect",
+  "admin/editor.whatsapp-phone.description": "Add the phone you want to link to the e-commerce",
+  "admin/editor.whatsapp-message.title": "WhatsApp Message",
+  "admin/editor.whatsapp-message.description": "Add the message you want the user to send by default"
 }
