@@ -16,7 +16,9 @@ const CSS_HANDLES = [
   'container__suggested--principal',
   'suggested__principal--title',
   'container__suggested--add',
+  'container__suggested--add-two',
   'container__suggested--complements',
+  'suggested__complements--products-child',
   'suggested__complements--title',
   'suggested__complements--products',
   'complements__products--delete',
@@ -79,7 +81,6 @@ const SuggestedProducts = () => {
   }
 
   useEffect(() => {
-    setSelected([])
     if (product && product.properties && selectedItem) {
       setProductSelected(selectedItem.itemId)
       setPropertiesProduct(product.properties)
@@ -87,10 +88,13 @@ const SuggestedProducts = () => {
   }, [product, selectedItem])
 
   useEffect(() => {
-    if (propertiesProduct && propertiesProduct.length) {
-      let filterProducts: any = finalArray(propertiesProduct).filter((number) => productSelected === number.principal)
-      setSelected(filterProducts)
-    }
+    setSelected([])
+    setTimeout(() => {
+      if (propertiesProduct && propertiesProduct.length) {
+        let filterProducts: any = finalArray(propertiesProduct).filter((number) => productSelected === number.principal)
+        setSelected(filterProducts)
+      }
+    }, 500);
   }, [productSelected, propertiesProduct])
 
   useEffect(() => {
@@ -103,49 +107,47 @@ const SuggestedProducts = () => {
           ?
           selected.map((element) =>
             <div className={handles['container__suggested']}>
-              <div className={handles['container__suggested--principal']}>
-                <p className={handles['suggested__principal--title']}>Estás viendo</p>
-                <ProductCard skuID={element.principal} setTotal={setTotal} />
-              </div>
-              {
-                element.sugerido1
-                &&
-                <span className={handles['container__suggested--add']}>+</span>
-              }
               <div className={handles['container__suggested--complements']}>
                 <p className={handles['suggested__complements--title']}>Completa tu compra</p>
                 <div className={handles['suggested__complements--products']}>
+                  <div className={handles['suggested__complements--products-child']}>
+                    <p className={handles['suggested__principal--title']}>Estás viendo</p>
+                    <div className={handles['container__suggested--principal']}>
+                      <ProductCard skuID={element.principal} setTotal={setTotal} />
+                    </div>
+                  </div>
                   {
-                    element.sugerido1
+                    element.sugerido1 && element.sugerido1 !== '0'
                     &&
-                    <>
+                    <div className={handles['suggested__complements--products-child']}>
+                      <span className={`${handles['container__suggested--add']}`}>+</span>
                       <div className='relative'>
                         <button onClick={() => deleteSku(element.sugerido1)} className={handles['complements__products--delete']}>✖</button>
                         <ProductCard skuID={element.sugerido1} setTotal={setTotal} selected={selected} />
                       </div>
-                    </>
+                    </div>
                   }
                   {
-                    element.sugerido2
+                    element.sugerido2 && element.sugerido2 !== '0'
                     &&
-                    <>
-                      <span className={handles['container__suggested--add']}>+</span>
+                    <div className={handles['suggested__complements--products-child']}>
+                      <span className={`${handles['container__suggested--add']} ${handles['container__suggested--add-two']}`}>+</span>
                       <div className='relative'>
                         <button onClick={() => deleteSku(element.sugerido2)} className={handles['complements__products--delete']}>✖</button>
                         <ProductCard skuID={element.sugerido2} setTotal={setTotal} selected={selected} />
                       </div>
-                    </>
+                    </div>
                   }
                   {
-                    element.sugerido3
+                    element.sugerido3 && element.sugerido3 !== '0'
                     &&
-                    <>
+                    <div className={handles['suggested__complements--products-child']}>
                       <span className={handles['container__suggested--add']}>+</span>
                       <div className='relative'>
                         <button onClick={() => deleteSku(element.sugerido3)} className={handles['complements__products--delete']}>✖</button>
                         <ProductCard skuID={element.sugerido3} setTotal={setTotal} selected={selected} />
                       </div>
-                    </>
+                    </div>
                   }
                 </div>
               </div>
