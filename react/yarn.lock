@@ -2007,9 +2007,9 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-"bonlifeco.front-end-applications@https://christiandev--bonlifeco.myvtex.com/_v/private/typings/linked/v1/bonlifeco.front-end-applications@0.0.0+build1702643029/public/@types/bonlifeco.front-end-applications":
-  version "0.0.0"
-  resolved "https://christiandev--bonlifeco.myvtex.com/_v/private/typings/linked/v1/bonlifeco.front-end-applications@0.0.0+build1702643029/public/@types/bonlifeco.front-end-applications#725fb7ea5c4442bbf72d297dade3320e741b08c9"
+"bonlifeco.front-end-applications@https://menu2--bonlifeco.myvtex.com/_v/private/typings/linked/v1/bonlifeco.front-end-applications@0.1.0+build1706409481/public/@types/bonlifeco.front-end-applications":
+  version "0.1.0"
+  resolved "https://menu2--bonlifeco.myvtex.com/_v/private/typings/linked/v1/bonlifeco.front-end-applications@0.1.0+build1706409481/public/@types/bonlifeco.front-end-applications#ce15d359f278f373ebf707da5151ed10b82a991d"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -5341,9 +5341,13 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.css-handles@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.0/public/@types/vtex.css-handles":
-  version "1.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.0/public/@types/vtex.css-handles#336b23ef3a9bcb2b809529ba736783acd405d081"
+"vtex.css-handles@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.1/public/@types/vtex.css-handles":
+  version "1.0.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.1/public/@types/vtex.css-handles#9444e64afad49e3ace3461f170b7d28f29b78d07"
+
+"vtex.device-detector@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.device-detector@0.2.6/public/@types/vtex.device-detector":
+  version "0.2.6"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.device-detector@0.2.6/public/@types/vtex.device-detector#3219242fa5c2f14023d33c3549c2d8de93c76d1f"
 
 "vtex.format-currency@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.format-currency@0.4.1/public/@types/vtex.format-currency":
   version "0.4.1"
@@ -5352,6 +5356,10 @@ verror@1.10.0:
 "vtex.list-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-context@0.2.0/public/@types/vtex.list-context":
   version "0.2.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-context@0.2.0/public/@types/vtex.list-context#935b748d394851ced7f3b06bbedf59f4ee3ca8a6"
+
+"vtex.mega-menu@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.mega-menu@0.2.0/public/@types/vtex.mega-menu":
+  version "0.2.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.mega-menu@0.2.0/public/@types/vtex.mega-menu#3d035c6240b9cb2bfc66ffdba7cdab71ad490b66"
 
 "vtex.order-items@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-items@0.13.23/public/@types/vtex.order-items":
   version "0.13.23"

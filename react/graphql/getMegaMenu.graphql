@@ -1,0 +1,26 @@
+query{
+  menus @context(provider: "vtex.mega-menu@0.x") {
+    display
+    icon
+    id
+    name
+    order
+    slug
+    menu {
+      display
+      icon
+      id
+      name
+      order
+      slug
+      menu {
+        display
+        icon
+        id
+        name
+        order
+        slug
+      }
+    }
+  }
+}

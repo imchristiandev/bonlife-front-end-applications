@@ -1,11 +1,16 @@
 {
   "whatsapp-button": {
-    "component": "WhatsAppButton"
+    "component": "WhatsAppButton",
+    "render": "client"
   },
   "promotion-popup": {
     "component": "PromotionApp"
   },
   "special-suggested-products":{
     "component": "SuggestedProducts"
+  },
+  "responsive-mega-menu": {
+    "component": "MegaMenu",
+    "render": "client"
   }
 }
