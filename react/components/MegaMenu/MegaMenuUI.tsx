@@ -3,10 +3,15 @@ import { IMegaMenuUI } from './MegaMenu'
 import { useDevice } from 'vtex.device-detector'
 import { PhoneMenu } from './PhoneMenu'
 
-export const MegaMenuUI = ({ mobileMenuType, menuObject }: IMegaMenuUI) => {
+export const MegaMenuUI = ({
+  mobileMenuType,
+  menuObject,
+  mobileMenuDepartmentsTitle,
+  mobileMenuDepartmentsTitleOn,
+  mobileMenuItemsBehavior = 'openParentLink'
+}: IMegaMenuUI) => {
   const { device } = useDevice()
 
-  console.log(menuObject, mobileMenuType)
   switch (device) {
     case 'desktop':
       return (
@@ -14,7 +19,13 @@ export const MegaMenuUI = ({ mobileMenuType, menuObject }: IMegaMenuUI) => {
       )
     case 'phone':
       return (
-        <PhoneMenu />
+        <PhoneMenu
+          menuObject={menuObject}
+          mobileMenuType={mobileMenuType}
+          mobileMenuDepartmentsTitle={mobileMenuDepartmentsTitle}
+          mobileMenuDepartmentsTitleOn={mobileMenuDepartmentsTitleOn}
+          mobileMenuItemsBehavior={mobileMenuItemsBehavior}
+        />
       )
     case 'tablet':
       return (
@@ -22,7 +33,13 @@ export const MegaMenuUI = ({ mobileMenuType, menuObject }: IMegaMenuUI) => {
       )
     default:
       return (
-        <PhoneMenu />
+        <PhoneMenu
+          menuObject={menuObject}
+          mobileMenuType={mobileMenuType}
+          mobileMenuDepartmentsTitle={mobileMenuDepartmentsTitle}
+          mobileMenuDepartmentsTitleOn={mobileMenuDepartmentsTitleOn}
+          mobileMenuItemsBehavior={mobileMenuItemsBehavior}
+        />
       )
   }
 }

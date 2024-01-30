@@ -4,7 +4,12 @@ import GET_MEGA_MENU from '../../graphql/getMegaMenu.graphql'
 import { MegaMenuUI } from './MegaMenuUI'
 
 
-export const MegaMenu = ({ mobileMenuType }: any) => {
+export const MegaMenu = ({
+  mobileMenuType,
+  mobileMenuDepartmentsTitle,
+  mobileMenuDepartmentsTitleOn,
+  mobileMenuItemsBehavior
+}: any) => {
   const { loading, data } = useQuery(GET_MEGA_MENU)
 
   return (
@@ -12,7 +17,10 @@ export const MegaMenu = ({ mobileMenuType }: any) => {
     <div>Loading...</div> :
     <MegaMenuUI
       mobileMenuType={mobileMenuType}
-      menuObject={data}
+      menuObject={data.menus}
+      mobileMenuDepartmentsTitle={mobileMenuDepartmentsTitle}
+      mobileMenuDepartmentsTitleOn={mobileMenuDepartmentsTitleOn}
+      mobileMenuItemsBehavior={mobileMenuItemsBehavior}
     />
   )
 }
@@ -32,6 +40,16 @@ MegaMenu.schema = {
       type: 'string',
       enum: ['openParentLink', 'openChildren'],
       default: 'openParentLink'
-    }
+    },
+    mobileMenuDepartmentsTitleOn: {
+      title: 'Activate Menu Departments Title',
+      type: 'boolean',
+      default: false
+    },
+    mobileMenuDepartmentsTitle: {
+      title: 'Mobile Menu Departments Title',
+      type: 'string',
+      default: 'Categorías'
+    },
   }
 }
