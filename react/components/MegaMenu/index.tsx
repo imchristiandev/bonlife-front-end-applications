@@ -1,27 +1,33 @@
-import React from 'react'
-import { useQuery } from 'react-apollo'
-import GET_MEGA_MENU from '../../graphql/getMegaMenu.graphql'
+import React, { useContext, useEffect } from 'react'
+import MenuContext from '../../context/menuContext'
 import { MegaMenuUI } from './MegaMenuUI'
-
 
 export const MegaMenu = ({
   mobileMenuType,
   mobileMenuDepartmentsTitle,
   mobileMenuDepartmentsTitleOn,
-  mobileMenuItemsBehavior
+  mobileMenuItemsBehavior,
+  mobileMenuIconSize
 }: any) => {
-  const { loading, data } = useQuery(GET_MEGA_MENU)
+  const {
+    setMobileMenuType,
+    setMobileMenuDepartmentsTitle,
+    setMobileMenuDepartmentsTitleOn,
+    setMobileMenuItemsBehavior,
+    setMobileMenuIconSize
+  } = useContext(MenuContext)
+
+  useEffect(() => {
+    setMobileMenuType(mobileMenuType)
+    setMobileMenuDepartmentsTitle(mobileMenuDepartmentsTitle)
+    setMobileMenuDepartmentsTitleOn(mobileMenuDepartmentsTitleOn)
+    setMobileMenuItemsBehavior(mobileMenuItemsBehavior)
+    setMobileMenuIconSize(mobileMenuIconSize)
+  }
+  , [mobileMenuType, mobileMenuDepartmentsTitle, mobileMenuDepartmentsTitleOn, mobileMenuItemsBehavior])
 
   return (
-    loading ?
-    <div>Loading...</div> :
-    <MegaMenuUI
-      mobileMenuType={mobileMenuType}
-      menuObject={data.menus}
-      mobileMenuDepartmentsTitle={mobileMenuDepartmentsTitle}
-      mobileMenuDepartmentsTitleOn={mobileMenuDepartmentsTitleOn}
-      mobileMenuItemsBehavior={mobileMenuItemsBehavior}
-    />
+    <MegaMenuUI/>
   )
 }
 
@@ -51,5 +57,10 @@ MegaMenu.schema = {
       type: 'string',
       default: 'Categorías'
     },
+    mobileMenuIconSize: {
+      title: 'Mobile Icon Menu Size',
+      type: 'number',
+      default: 12
+    }
   }
 }

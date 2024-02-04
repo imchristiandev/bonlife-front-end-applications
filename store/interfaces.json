@@ -10,7 +10,7 @@
     "component": "SuggestedProducts"
   },
   "responsive-mega-menu": {
-    "component": "MegaMenu",
+    "component": "CompMegaMenu",
     "render": "client"
   }
 }
