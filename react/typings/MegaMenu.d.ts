@@ -35,3 +35,13 @@ interface IMenuContext {
   setMobileMenuIconSize: (size: number) => void,
   setMegaMenuData: (data: IMenuObject[]) => void,
 }
+
+export interface IMenuItem {
+  display: boolean,
+  hasChildren: boolean,
+  icon: string,
+  id: string,
+  name: string,
+  order: number,
+  slug: string
+}

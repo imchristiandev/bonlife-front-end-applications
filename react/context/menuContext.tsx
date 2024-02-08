@@ -37,7 +37,8 @@ const MenuProvider: React.FC = ({ children }) => {
     setMobileMenuDepartmentsTitle,
     setMobileMenuDepartmentsTitleOn,
     setMobileMenuItemsBehavior,
-    setMobileMenuIconSize
+    setMobileMenuIconSize,
+    setCurrentMenu
   }
 
   return <MenuContext.Provider value={{

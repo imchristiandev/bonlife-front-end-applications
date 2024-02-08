@@ -6,7 +6,7 @@ export const MegaMenu = ({
   mobileMenuType,
   mobileMenuDepartmentsTitle,
   mobileMenuDepartmentsTitleOn,
-  mobileMenuItemsBehavior,
+  mobileMenuItemsBehavior = 'openParentLink',
   mobileMenuIconSize
 }: any) => {
   const {
@@ -21,6 +21,7 @@ export const MegaMenu = ({
     setMobileMenuType(mobileMenuType)
     setMobileMenuDepartmentsTitle(mobileMenuDepartmentsTitle)
     setMobileMenuDepartmentsTitleOn(mobileMenuDepartmentsTitleOn)
+    console.log("MMIB", mobileMenuItemsBehavior)
     setMobileMenuItemsBehavior(mobileMenuItemsBehavior)
     setMobileMenuIconSize(mobileMenuIconSize)
   }
