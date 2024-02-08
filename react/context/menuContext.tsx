@@ -7,10 +7,10 @@ import { updateCurrentMenu } from '../utils/updateCurrentMenu';
 const MenuContext = createContext<any | null>(null);
 
 const MenuProvider: React.FC = ({ children }) => {
-  const [mobileMenuType, setMobileMenuType] = React.useState('accordion')
+  const [mobileMenuType, setMobileMenuType] = React.useState('')
   const [mobileMenuDepartmentsTitle, setMobileMenuDepartmentsTitle] = React.useState('')
   const [mobileMenuDepartmentsTitleOn, setMobileMenuDepartmentsTitleOn] = React.useState(false)
-  const [mobileMenuItemsBehavior, setMobileMenuItemsBehavior] = React.useState('openParentLink')
+  const [mobileMenuItemsBehavior, setMobileMenuItemsBehavior] = React.useState('')
   const [mobileMenuIconSize, setMobileMenuIconSize] = React.useState(12)
   const { loading, data } = useQuery(GET_MEGA_MENU)
   const [currentMenu, setCurrentMenu] = React.useState(null)

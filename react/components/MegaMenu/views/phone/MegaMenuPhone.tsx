@@ -12,6 +12,7 @@ import { updateCurrentMenu } from '../../../../utils/updateCurrentMenu'
 
 export const MegaMenuPhone = () => {
   const { currentMenu, mobileMenuItemsBehavior, setCurrentMenu } = React.useContext(MenuContext)
+  console.log("🚀 ~ MegaMenuPhone ~ mobileMenuItemsBehavior:", mobileMenuItemsBehavior)
   const [menuId, setMenuId] = useState('')
   const { navigate } = useRuntime()
 
@@ -42,7 +43,7 @@ export const MegaMenuPhone = () => {
           currentMenu.map((menu: IMenuItem) => (
             <li key={menu.id}>
               {
-                mobileMenuItemsBehavior === 'openParentLink' ?
+                (mobileMenuItemsBehavior === 'openParentLink') ?
                 <div className='flex justify-between'>
                   <button onClick = { () => {handleNavigation( menu.slug )} } >
                     <Icon id={ menu.icon } /> { menu.name }
@@ -54,13 +55,19 @@ export const MegaMenuPhone = () => {
                   </button>
                   }
                 </div> :
-                <button onClick = { () => {handleNavigation( menu.slug )} } >
+                <button
+                  className='flex justify-between'
+                  onClick = { () => {updateChildrenMenu( menu.id )} }
+                >
                   <div>
                     <Icon id={ menu.icon } /> { menu.name }
                   </div>
+                  {
+                  menu.hasChildren &&
                   <div>
                     <Icon id={ menu.icon } />
                   </div>
+                  }
                 </button>
               }
             </li>
