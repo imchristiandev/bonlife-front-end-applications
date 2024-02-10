@@ -17,7 +17,6 @@ const CompMegaMenu = ({
   mobileMenuItemsBehavior,
   mobileMenuIconSize
 }: IMegaMenuProps) => {
-  console.log("Comp Mega menu data", mobileMenuType, mobileMenuDepartmentsTitle, mobileMenuDepartmentsTitleOn, mobileMenuItemsBehavior, mobileMenuIconSize)
   return (
     <MenuProvider>
       <MegaMenu

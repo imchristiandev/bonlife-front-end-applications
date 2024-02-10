@@ -9,8 +9,6 @@ export const MegaMenu = ({
   mobileMenuItemsBehaviorProp,
   mobileMenuIconSizeProp
 }: any) => {
-
-  console.log("Mega menu", mobileMenuTypeProp, mobileMenuDepartmentsTitleProp, mobileMenuDepartmentsTitleOnProp, mobileMenuItemsBehaviorProp, mobileMenuIconSizeProp)
   const {
     setMobileMenuType,
     setMobileMenuDepartmentsTitle,
