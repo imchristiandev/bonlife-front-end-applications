@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { createContext } from "react";
 import { useQuery } from 'react-apollo';
 import GET_MEGA_MENU from '../graphql/getMegaMenu.graphql'
-import { updateCurrentMenu } from '../utils/updateCurrentMenu';
+import { updateCurrentMenu } from '../utils/updateCurrentMenu'
 
 const MenuContext = createContext<any | null>(null);
 
@@ -14,31 +14,45 @@ const MenuProvider: React.FC = ({ children }) => {
   const [mobileMenuIconSize, setMobileMenuIconSize] = React.useState(12)
   const { loading, data } = useQuery(GET_MEGA_MENU)
   const [currentMenu, setCurrentMenu] = React.useState(null)
+  const [mainMenu, setMainMenu] = React.useState(null)
+  const [accordionMenu, setAccordionMenu] = React.useState(null)
+  const [breadcrumb, setBreadcrumb] = React.useState(['root'])
 
   useEffect(() => {
     if (data) {
-      const currentMenu = updateCurrentMenu(data.menus)
-      setCurrentMenu(currentMenu)
+      const menu = updateCurrentMenu(data.menus)
+      setCurrentMenu(menu)
+      setMainMenu(menu)
+      setAccordionMenu(data.menus)
     }
   }, [data])
 
+  useEffect(() => {
+    (breadcrumb.length === 1) &&
+      setCurrentMenu(mainMenu)
+  }, [breadcrumb])
+
   const stateGroup = {
-    mobileMenuType,
+    accordionMenu,
+    breadcrumb,
+    currentMenu,
+    loading,
+    mainMenu,
     mobileMenuDepartmentsTitle,
     mobileMenuDepartmentsTitleOn,
-    mobileMenuItemsBehavior,
     mobileMenuIconSize,
-    loading,
-    currentMenu
+    mobileMenuItemsBehavior,
+    mobileMenuType,
   }
 
   const methodGroup = {
-    setMobileMenuType,
+    setBreadcrumb,
+    setCurrentMenu,
     setMobileMenuDepartmentsTitle,
     setMobileMenuDepartmentsTitleOn,
-    setMobileMenuItemsBehavior,
     setMobileMenuIconSize,
-    setCurrentMenu
+    setMobileMenuItemsBehavior,
+    setMobileMenuType,
   }
 
   return <MenuContext.Provider value={{

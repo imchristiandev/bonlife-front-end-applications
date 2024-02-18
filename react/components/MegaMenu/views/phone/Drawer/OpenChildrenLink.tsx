@@ -1,7 +1,7 @@
 import React from 'react'
 // @ts-ignore
 import { Icon } from 'vtex.store-icons'
-import { IMenuItem } from '../../../../typings/MegaMenu'
+import { IMenuItem } from '../../../../../typings/MegaMenu'
 
 interface IOpenParentLink {
   menu: IMenuItem
@@ -9,22 +9,29 @@ interface IOpenParentLink {
   handleNavigation: (slug: string) => void
 }
 
-export const OpenParentLink = ({
+export const OpenChildrenLink = ({
   menu,
   updateChildrenMenu,
   handleNavigation
 }: IOpenParentLink) => {
   return (
-    <div className='flex justify-between'>
-      <button onClick = { () => {handleNavigation( menu.slug )} } >
+    <button
+      className='flex justify-between w-100 pa3'
+      onClick = { () => {
+        menu.hasChildren ?
+        updateChildrenMenu( menu.id ) :
+        handleNavigation( menu.slug )
+      }}
+    >
+      <div>
         <Icon id={ menu.icon } /> { menu.name }
-      </button>
+      </div>
       {
       menu.hasChildren &&
-      <button onClick={() => updateChildrenMenu( menu.id )}>
+      <div>
         <Icon id={ menu.icon } />
-      </button>
+      </div>
       }
-    </div>
+    </button>
   )
 }

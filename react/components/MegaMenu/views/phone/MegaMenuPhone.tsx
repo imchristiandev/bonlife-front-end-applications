@@ -1,35 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import MenuContext from '../../../../context/menuContext'
-
+import { updateCurrentMenu } from '../../../../utils/updateCurrentMenu'
 // @ts-ignore
 import { Icon } from 'vtex.store-icons'
-
-
-import { IMenuItem } from '../../../../typings/MegaMenu'
 import { useQuery } from 'react-apollo'
 import GET_MENU from '../../../../graphql/getMenu.graphql'
-import { updateCurrentMenu } from '../../../../utils/updateCurrentMenu'
-import { OpenParentLink } from './OpenParentLink'
 import { useRuntime } from 'vtex.render-runtime'
-import { OpenChildrenLink } from './OpenChildrenLink'
+import { DrawerMenu } from './Drawer'
+import { AccordionMenu } from './AccordionMenu'
 
 export const MegaMenuPhone = () => {
-  const { currentMenu, mobileMenuItemsBehavior, setCurrentMenu } = React.useContext(MenuContext)
+  const {
+    breadcrumb,
+    setBreadcrumb,
+    loading,
+    mainMenu,
+    setCurrentMenu,
+    mobileMenuType
+  } = useContext(MenuContext)
+
   const [menuId, setMenuId] = useState('')
 
-
+  // * Main hooks
   const { data } = useQuery(GET_MENU, { variables: { menuId } });
   const { navigate } = useRuntime()
 
+  // * Re-render the menu when the data is ready
   useEffect(() => {
-    const newMenu = data?.menu?.menu
-    if (newMenu) {
-      setCurrentMenu(updateCurrentMenu(newMenu))
+    if (data?.menu?.menu) {
+      const newMenu = updateCurrentMenu(data.menu.menu)
+      setCurrentMenu(newMenu)
+    } else {
+      setCurrentMenu(mainMenu)
     }
-  }, [data])
+  }, [data, menuId, breadcrumb])
+
 
   const updateChildrenMenu = (menuId: string) => {
-    setMenuId( menuId );
+    setBreadcrumb( [...breadcrumb, menuId] )
+    setMenuId( menuId )
   }
 
   const handleNavigation = (slug: string) => {
@@ -39,29 +48,28 @@ export const MegaMenuPhone = () => {
     })
   }
 
+  // * Mega Menu Phone methods
+  const handleBack = () => {
+    if (breadcrumb.length > 1) {
+      const currentBreadCrumb = breadcrumb.slice(0, -1)
+      setBreadcrumb(currentBreadCrumb)
+    }
+  }
+
   return (
-    currentMenu ?
-      <ul className='w-100 pa6'>
-        {
-          currentMenu.map((menu: IMenuItem) => (
-            <li key={menu.id}>
-              {
-                (mobileMenuItemsBehavior === 'openParentLink') ?
-                <OpenParentLink
-                  menu={menu}
-                  updateChildrenMenu={updateChildrenMenu}
-                  handleNavigation={handleNavigation}
-                /> :
-                <OpenChildrenLink
-                  menu={menu}
-                  updateChildrenMenu={updateChildrenMenu}
-                  handleNavigation={handleNavigation}
-                />
-              }
-            </li>
-          ))
-        }
-      </ul>:
-      null
+
+    (loading) ?
+    <div>Loading...</div> :
+    (mobileMenuType === 'drawer') ? (
+    <DrawerMenu
+      handleBack={handleBack}
+      updateChildrenMenu={updateChildrenMenu}
+      handleNavigation={handleNavigation}
+    />
+    ) : (
+    <AccordionMenu
+      handleNavigation={handleNavigation}
+    />
+    )
   )
 }
