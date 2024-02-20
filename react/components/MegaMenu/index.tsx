@@ -7,14 +7,16 @@ export const MegaMenu = ({
   mobileMenuDepartmentsTitleProp,
   mobileMenuDepartmentsTitleOnProp,
   mobileMenuItemsBehaviorProp,
-  mobileMenuIconSizeProp
+  mobileMenuIconSizeProp,
+  desktopDistributionProp
 }: any) => {
   const {
     setMobileMenuType,
     setMobileMenuDepartmentsTitle,
     setMobileMenuDepartmentsTitleOn,
     setMobileMenuItemsBehavior,
-    setMobileMenuIconSize
+    setMobileMenuIconSize,
+    setDesktopDistribution
   } = useContext(MenuContext)
 
   useEffect(() => {
@@ -23,8 +25,16 @@ export const MegaMenu = ({
     setMobileMenuDepartmentsTitleOn(mobileMenuDepartmentsTitleOnProp)
     setMobileMenuItemsBehavior(mobileMenuItemsBehaviorProp)
     setMobileMenuIconSize(mobileMenuIconSizeProp)
+    setDesktopDistribution(desktopDistributionProp)
   }
-  , [mobileMenuTypeProp, mobileMenuDepartmentsTitleProp, mobileMenuDepartmentsTitleOnProp, mobileMenuItemsBehaviorProp])
+  ,
+  [
+    mobileMenuTypeProp,
+    mobileMenuDepartmentsTitleProp,
+    mobileMenuDepartmentsTitleOnProp,
+    mobileMenuItemsBehaviorProp,
+    desktopDistributionProp
+  ])
 
   return (
     <MegaMenuUI/>

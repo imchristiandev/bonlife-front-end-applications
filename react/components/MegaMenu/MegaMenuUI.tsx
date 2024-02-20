@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDevice } from 'vtex.device-detector'
 import { MegaMenuPhone } from './views/phone/MegaMenuPhone'
+import { MegaMenuDesktop } from './views/desktop/MegaMenuDesktop'
 
 export const MegaMenuUI = () => {
 
@@ -10,7 +11,7 @@ export const MegaMenuUI = () => {
     switch (device) {
       case 'desktop':
         return (
-          <div>Desktop</div>
+          <MegaMenuDesktop />
         )
       case 'phone':
         return (
@@ -18,11 +19,11 @@ export const MegaMenuUI = () => {
         )
       case 'tablet':
         return (
-          <div>Tablet</div>
+          <MegaMenuPhone />
         )
       default:
         return (
-          <div>Default</div>
+          <MegaMenuPhone />
         )
     }
   }

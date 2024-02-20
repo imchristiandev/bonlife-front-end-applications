@@ -15,15 +15,16 @@ const MenuProvider: React.FC = ({ children }) => {
   const { loading, data } = useQuery(GET_MEGA_MENU)
   const [currentMenu, setCurrentMenu] = React.useState(null)
   const [mainMenu, setMainMenu] = React.useState(null)
-  const [accordionMenu, setAccordionMenu] = React.useState(null)
+  const [completeMenu, setCompleteMenu] = React.useState(null)
   const [breadcrumb, setBreadcrumb] = React.useState(['root'])
+  const [desktopDistribution, setDesktopDistribution] = React.useState('')
 
   useEffect(() => {
     if (data) {
       const menu = updateCurrentMenu(data.menus)
       setCurrentMenu(menu)
       setMainMenu(menu)
-      setAccordionMenu(data.menus)
+      setCompleteMenu(data.menus)
     }
   }, [data])
 
@@ -33,7 +34,7 @@ const MenuProvider: React.FC = ({ children }) => {
   }, [breadcrumb])
 
   const stateGroup = {
-    accordionMenu,
+    completeMenu,
     breadcrumb,
     currentMenu,
     loading,
@@ -43,6 +44,7 @@ const MenuProvider: React.FC = ({ children }) => {
     mobileMenuIconSize,
     mobileMenuItemsBehavior,
     mobileMenuType,
+    desktopDistribution
   }
 
   const methodGroup = {
@@ -53,6 +55,7 @@ const MenuProvider: React.FC = ({ children }) => {
     setMobileMenuIconSize,
     setMobileMenuItemsBehavior,
     setMobileMenuType,
+    setDesktopDistribution
   }
 
   return <MenuContext.Provider value={{

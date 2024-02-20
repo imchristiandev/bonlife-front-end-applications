@@ -8,6 +8,7 @@ interface IMegaMenuProps {
   mobileMenuDepartmentsTitleOn: boolean
   mobileMenuItemsBehavior: string
   mobileMenuIconSize: number
+  desktopDistribution: string
 }
 
 const CompMegaMenu = ({
@@ -15,7 +16,8 @@ const CompMegaMenu = ({
   mobileMenuDepartmentsTitle,
   mobileMenuDepartmentsTitleOn,
   mobileMenuItemsBehavior,
-  mobileMenuIconSize
+  mobileMenuIconSize,
+  desktopDistribution,
 }: IMegaMenuProps) => {
   return (
     <MenuProvider>
@@ -25,6 +27,7 @@ const CompMegaMenu = ({
         mobileMenuDepartmentsTitleOnProp={mobileMenuDepartmentsTitleOn}
         mobileMenuItemsBehaviorProp={mobileMenuItemsBehavior}
         mobileMenuIconSizeProp={mobileMenuIconSize}
+        desktopDistributionProp={desktopDistribution}
       />
     </MenuProvider>
   )
@@ -56,6 +59,11 @@ CompMegaMenu.schema = {
     mobileMenuIconSize: {
       title: 'Mobile Icon Menu Size',
       type: 'number'
+    },
+    desktopDistribution: {
+      title: 'Desktop Distribution',
+      type: 'string',
+      enum: ['10/90', '20/80', '30/70', '40/60', '50/50', '60/40', '70/30', '80/20', '90/10']
     }
   }
 }

@@ -4,7 +4,7 @@ import { HandleChildrenLink } from './HandleChildrenLink'
 import { HandleParentLink } from './HandleParentLink'
 
 export const AccordionMenu = ({handleNavigation}: any) => {
-  const { accordionMenu, mobileMenuItemsBehavior } = useContext(MenuContext)
+  const { completeMenu, mobileMenuItemsBehavior } = useContext(MenuContext)
 
   const handleChildren = (event: any) => {
     const section = event.target.closest('li')
@@ -43,7 +43,7 @@ export const AccordionMenu = ({handleNavigation}: any) => {
 }
 
   return (
-    accordionMenu &&
-    buildMenu(accordionMenu)
+    completeMenu &&
+    buildMenu(completeMenu)
   )
 }
