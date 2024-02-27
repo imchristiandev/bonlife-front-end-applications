@@ -14,9 +14,11 @@ export const MegaMenuPhone = () => {
     breadcrumb,
     setBreadcrumb,
     loading,
-    mainMenu,
     setCurrentMenu,
-    mobileMenuType
+    mobileMenuType,
+    setMobileMenuDepartmentsTitle,
+    mobileMenuDepartmentsTitleOn,
+    mobileTitle
   } = useContext(MenuContext)
 
   const [menuId, setMenuId] = useState('')
@@ -27,18 +29,18 @@ export const MegaMenuPhone = () => {
 
   // * Re-render the menu when the data is ready
   useEffect(() => {
+    console.log("possible error")
     if (data?.menu?.menu) {
-      const newMenu = updateCurrentMenu(data.menu.menu)
+      const newMenu = updateCurrentMenu(data?.menu?.menu)
       setCurrentMenu(newMenu)
-    } else {
-      setCurrentMenu(mainMenu)
     }
   }, [data, menuId, breadcrumb])
 
-
-  const updateChildrenMenu = (menuId: string) => {
+  const updateChildrenMenu = (menuId: string, menuName: string) => {
     setBreadcrumb( [...breadcrumb, menuId] )
+    setMobileMenuDepartmentsTitle(menuName)
     setMenuId( menuId )
+
   }
 
   const handleNavigation = (slug: string) => {
@@ -57,19 +59,25 @@ export const MegaMenuPhone = () => {
   }
 
   return (
-
     (loading) ?
     <div>Loading...</div> :
-    (mobileMenuType === 'drawer') ? (
-    <DrawerMenu
-      handleBack={handleBack}
-      updateChildrenMenu={updateChildrenMenu}
-      handleNavigation={handleNavigation}
-    />
-    ) : (
-    <AccordionMenu
-      handleNavigation={handleNavigation}
-    />
-    )
+    <section className={`flex flex-column w-100`}>
+      { mobileMenuDepartmentsTitleOn &&
+        <h2 className='pl6 pr6 ma0'>{ mobileTitle }</h2>
+      }
+    {
+      (mobileMenuType === 'drawer') ? (
+      <DrawerMenu
+        handleBack={handleBack}
+        updateChildrenMenu={updateChildrenMenu}
+        handleNavigation={handleNavigation}
+      />
+      ) : (
+      <AccordionMenu
+        handleNavigation={handleNavigation}
+      />
+      )
+    }
+    </section>
   )
 }

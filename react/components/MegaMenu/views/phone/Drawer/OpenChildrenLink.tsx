@@ -5,7 +5,7 @@ import { IMenuItem } from '../../../../../typings/MegaMenu'
 
 interface IOpenParentLink {
   menu: IMenuItem
-  updateChildrenMenu: (menuId: string) => void
+  updateChildrenMenu: (menuId: string, menuName: string) => void
   handleNavigation: (slug: string) => void
 }
 
@@ -16,10 +16,10 @@ export const OpenChildrenLink = ({
 }: IOpenParentLink) => {
   return (
     <button
-      className='flex justify-between w-100 pa3'
+      className={`flex justify-between w-100 pa3 bn bg-transparent pa0 ma0 lh-solid pointer`}
       onClick = { () => {
         menu.hasChildren ?
-        updateChildrenMenu( menu.id ) :
+        updateChildrenMenu( menu.id, menu.name ) :
         handleNavigation( menu.slug )
       }}
     >

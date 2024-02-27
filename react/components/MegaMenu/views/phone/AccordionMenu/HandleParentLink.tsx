@@ -16,14 +16,20 @@ export const HandleParentLink = ({
 
   return (
     <div className='flex justify-between w-100 pa3'>
-      <button onClick = { () => {
-        handleNavigation( menu.slug )
-      }}>
+      <button
+        className={`bn bg-transparent pa0 ma0 lh-solid pointer`}
+        onClick = { () => {
+          handleNavigation( menu.slug )
+        }}
+      >
         <Icon id={ menu.icon } /> { menu.name }
       </button>
       {
       (menu.menu && menu.menu.length > 1) &&
-      <button onClick={( event: any ) => handleChildren( event )}>
+      <button
+        className={`bn bg-transparent pa0 ma0 lh-solid pointer`}
+        onClick={( event: any ) => handleChildren( event )}
+      >
         <Icon id={ menu.icon } />
       </button>
       }

@@ -4,6 +4,8 @@ import { IMenuItem } from '../../../../../typings/MegaMenu'
 import { OpenParentLink } from './OpenParentLink'
 import { OpenChildrenLink } from './OpenChildrenLink'
 
+import styles from '../../../styles.css'
+
 export const DrawerMenu = ({
   handleBack,
   updateChildrenMenu,
@@ -19,13 +21,16 @@ export const DrawerMenu = ({
     <>
     {
       (breadcrumb.length > 1) &&
-      <button onClick={handleBack}>
+      <button
+        className={`bn bg-transparent pa0 ma0 lh-solid pointer`}
+        onClick={handleBack}
+      >
         Volver
       </button>
     }
     {
     currentMenu &&
-      <ul className='w-100 pa6'>
+      <ul className={`${styles['list']} w-100 pa6 ma0`}>
         {
           currentMenu.map((menu: IMenuItem) => (
             <li key={menu.id}>

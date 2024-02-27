@@ -3,6 +3,8 @@ import React from 'react'
 import { Icon } from 'vtex.store-icons'
 import { SecondLevelMenu } from './SecondLevelMenu'
 
+import styles from '../../styles.css'
+
 export const FirstLevelMenu = ({
   menu,
   handleNavigation
@@ -16,7 +18,10 @@ export const FirstLevelMenu = ({
     return (
       menu && menu.map((item: any) => {
         return <li key={item?.id}>
-          <button onClick = { () => {handleNavigation( item?.slug )} } >
+          <button
+            onClick = { () => {handleNavigation( item?.slug )} }
+            className={`bn bg-transparent pa0 ma0 lh-solid pointer`}
+          >
             <Icon id={ item?.icon } /> { item?.name }
           </button>
           {
@@ -34,7 +39,7 @@ export const FirstLevelMenu = ({
       ))
   }
   return (
-    <ul>
+    <ul className={styles['list']}>
       { printFirstLevelMenu() }
     </ul>
   )

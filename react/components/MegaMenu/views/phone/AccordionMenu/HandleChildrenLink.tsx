@@ -15,7 +15,7 @@ export const HandleChildrenLink = ({
 }: IHandleChildrenLink) => {
   return (
     <button
-      className='flex justify-between w-100 pa3'
+      className={`flex justify-between w-100 pa3 bn bg-transparent pa0 ma0 lh-solid pointer`}
       onClick = { (event: any) => {
         (menu.menu && menu.menu.length > 1) ?
         handleChildren(event) :

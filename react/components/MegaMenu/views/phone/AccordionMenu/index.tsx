@@ -1,7 +1,10 @@
 import React, { useContext } from 'react'
+
 import MenuContext from '../../../../../context/menuContext'
 import { HandleChildrenLink } from './HandleChildrenLink'
 import { HandleParentLink } from './HandleParentLink'
+
+import styles from '../../../styles.css'
 
 export const AccordionMenu = ({handleNavigation}: any) => {
   const { completeMenu, mobileMenuItemsBehavior } = useContext(MenuContext)
@@ -13,7 +16,7 @@ export const AccordionMenu = ({handleNavigation}: any) => {
 
   const buildMenu = (menu: any, depth: number = 1) => {
     return (
-      <ul className={`${depth !== 1 ? 'dn pa0' : 'db pa6'} w-100`}>
+      <ul className={`${styles['list']} ${depth !== 1 ? 'dn pa0' : 'db pa6'} w-100 ma0`}>
         {
           menu.map((menu: any) => {
             return (

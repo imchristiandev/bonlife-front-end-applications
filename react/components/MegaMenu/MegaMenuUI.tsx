@@ -7,6 +7,7 @@ export const MegaMenuUI = () => {
 
   const { device } = useDevice()
 
+
   const responsiveMenu = (device: string) => {
     switch (device) {
       case 'desktop':
@@ -28,5 +29,9 @@ export const MegaMenuUI = () => {
     }
   }
 
-  return responsiveMenu(device)
+  return (
+    <>
+      { responsiveMenu(device) }
+    </>
+  )
 }
