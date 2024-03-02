@@ -11,15 +11,15 @@ export const MegaMenuDesktop = () => {
 
   const { navigate } = useRuntime()
 
-  const handleNavigation = (slug: string) => {
-      const newSlug = slug.startsWith('/') ? slug : `/${slug}`
-      navigate({
-        to: `${newSlug}/`,
-      })
-    }
   // Effects
 
   // Methods
+  const handleNavigation = (slug: string) => {
+    const newSlug = slug.startsWith('/') ? slug : `/${slug}`
+    navigate({
+      to: `${newSlug}/`,
+    })
+  }
 
   return (
     (loading) ?

@@ -8,8 +8,17 @@ import GET_MENU from '../../../../graphql/getMenu.graphql'
 import { useRuntime } from 'vtex.render-runtime'
 import { DrawerMenu } from './Drawer'
 import { AccordionMenu } from './AccordionMenu'
+import { useCssHandles } from 'vtex.css-handles'
+
+const CSS_HANDLES = [
+  'phone__container',
+  'phone__container--title'
+]
 
 export const MegaMenuPhone = () => {
+
+  const { handles } = useCssHandles(CSS_HANDLES)
+
   const {
     breadcrumb,
     setBreadcrumb,
@@ -18,7 +27,7 @@ export const MegaMenuPhone = () => {
     mobileMenuType,
     setMobileMenuDepartmentsTitle,
     mobileMenuDepartmentsTitleOn,
-    mobileTitle
+    // mobileTitle
   } = useContext(MenuContext)
 
   const [menuId, setMenuId] = useState('')
@@ -37,9 +46,9 @@ export const MegaMenuPhone = () => {
   }, [data, menuId, breadcrumb])
 
   const updateChildrenMenu = (menuId: string, menuName: string) => {
-    setBreadcrumb( [...breadcrumb, menuId] )
+    setBreadcrumb([...breadcrumb, menuId])
     setMobileMenuDepartmentsTitle(menuName)
-    setMenuId( menuId )
+    setMenuId(menuId)
 
   }
 
@@ -60,24 +69,27 @@ export const MegaMenuPhone = () => {
 
   return (
     (loading) ?
-    <div>Loading...</div> :
-    <section className={`flex flex-column w-100`}>
-      { mobileMenuDepartmentsTitleOn &&
-        <h2 className='pl6 pr6 ma0'>{ mobileTitle }</h2>
-      }
-    {
-      (mobileMenuType === 'drawer') ? (
-      <DrawerMenu
-        handleBack={handleBack}
-        updateChildrenMenu={updateChildrenMenu}
-        handleNavigation={handleNavigation}
-      />
-      ) : (
-      <AccordionMenu
-        handleNavigation={handleNavigation}
-      />
-      )
-    }
-    </section>
+      <div>Loading...</div> :
+      <section className={`${handles['phone__container']} flex flex-column w-100`}>
+        {mobileMenuDepartmentsTitleOn && (breadcrumb.length === 1) &&
+          <h2 className={`${handles['phone__container--title']} pl6 pr6 ma0`}>
+            {/* {mobileTitle} */}
+            Categorías
+          </h2>
+        }
+        {
+          (mobileMenuType === 'drawer') ? (
+            <DrawerMenu
+              handleBack={handleBack}
+              updateChildrenMenu={updateChildrenMenu}
+              handleNavigation={handleNavigation}
+            />
+          ) : (
+            <AccordionMenu
+              handleNavigation={handleNavigation}
+            />
+          )
+        }
+      </section>
   )
 }
