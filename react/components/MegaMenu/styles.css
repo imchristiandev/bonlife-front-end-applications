@@ -1,3 +1,21 @@
+.desktopMenu {
+  height: 75px;
+}
+
 .list {
   list-style: none;
+}
+.loading__size {
+  display: block;
+  height: 23px;
+  margin: 26px 16px;
+  max-width: 80px;
+  width: 100%;
+  animation: colorChange 2s infinite;
+}
+
+@keyframes colorChange {
+  0% { background-color: #c7c7c7; }
+  50% { background-color: #5c5c5c; }
+  100% { background-color: #c7c7c7; }
 }

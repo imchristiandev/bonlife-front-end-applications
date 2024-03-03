@@ -3,6 +3,8 @@ import { useDevice } from 'vtex.device-detector'
 import { MegaMenuPhone } from './views/phone/MegaMenuPhone'
 import { MegaMenuDesktop } from './views/desktop/MegaMenuDesktop'
 
+import styles from './styles.css'
+
 export const MegaMenuUI = () => {
 
   const { device } = useDevice()
@@ -30,8 +32,8 @@ export const MegaMenuUI = () => {
   }
 
   return (
-    <>
+    <div className={styles.desktopMenu}>
       { responsiveMenu(device) }
-    </>
+    </div>
   )
 }

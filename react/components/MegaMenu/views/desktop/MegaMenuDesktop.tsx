@@ -1,9 +1,13 @@
 import React, { useContext } from 'react'
 import MenuContext from '../../../../context/menuContext'
 import { FirstLevelMenu } from './FirstLevelMenu'
+import { LoadingDesktop } from './LoadingDesktop';
 import { useRuntime } from 'vtex.render-runtime'
 
+
+
 export const MegaMenuDesktop = () => {
+
   const {
     completeMenu,
     loading,
@@ -23,7 +27,7 @@ export const MegaMenuDesktop = () => {
 
   return (
     (loading) ?
-    <div>'Loading...'</div> :
+    <LoadingDesktop />:
     <FirstLevelMenu
       menu={completeMenu}
       handleNavigation={handleNavigation}
