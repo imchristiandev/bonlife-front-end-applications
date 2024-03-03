@@ -5,7 +5,6 @@ import { updateCurrentMenu } from '../../../../utils/updateCurrentMenu'
 import { Icon } from 'vtex.store-icons'
 import { useQuery } from 'react-apollo'
 import GET_MENU from '../../../../graphql/getMenu.graphql'
-import { useRuntime } from 'vtex.render-runtime'
 import { DrawerMenu } from './Drawer'
 import { AccordionMenu } from './AccordionMenu'
 import { useCssHandles } from 'vtex.css-handles'
@@ -34,7 +33,6 @@ export const MegaMenuPhone = () => {
 
   // * Main hooks
   const { data } = useQuery(GET_MENU, { variables: { menuId } });
-  const { navigate } = useRuntime()
 
   // * Re-render the menu when the data is ready
   useEffect(() => {
@@ -54,9 +52,7 @@ export const MegaMenuPhone = () => {
 
   const handleNavigation = (slug: string) => {
     const newSlug = slug.startsWith('/') ? slug : `/${slug}`
-    navigate({
-      to: `${newSlug}/`,
-    })
+    window.location.href =(window.location.origin + newSlug)
   }
 
   // * Mega Menu Phone methods
@@ -69,7 +65,7 @@ export const MegaMenuPhone = () => {
 
   return (
     (loading) ?
-      <div>Loading...</div> :
+      <></> :
       <section className={`${handles['phone__container']} flex flex-column w-100`}>
         {mobileMenuDepartmentsTitleOn && (breadcrumb.length === 1) &&
           <h2 className={`${handles['phone__container--title']} pl6 pr6 ma0`}>
