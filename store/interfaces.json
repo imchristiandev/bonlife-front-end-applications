@@ -12,5 +12,9 @@
   "responsive-mega-menu": {
     "component": "CompMegaMenu",
     "render": "client"
+  },
+  "custom-grid": {
+    "component": "CompCustomGrid",
+    "render": "client"
   }
 }

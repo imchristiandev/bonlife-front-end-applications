@@ -1,0 +1,37 @@
+.grid {
+  display: flex;
+  gap: 20px;
+}
+.grid__section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: calc((100% / 3) - (40px / 3));
+}
+.grid__item,
+.grid__item--large {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding-bottom: calc(75% - 10px);
+  position: relative;
+  width: 100%;
+
+}
+
+.grid__item--large {
+  padding-bottom: 150%;
+}
+
+.grid__item img,
+.grid__item--large img {
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.grid__item a,
+.grid__item--large a {
+  width: 100%;
+}
