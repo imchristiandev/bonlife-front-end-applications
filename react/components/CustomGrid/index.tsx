@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles.css'
+import { GridElement } from './GridElement'
 
 export const CustomGrid = ({
   imageMobileBig,
@@ -23,39 +24,18 @@ export const CustomGrid = ({
   urlDesktop4,
   callToAction4
 }: any) => {
-  console.log(imageMobileBig, imageDesktopBig, urlDesktopBig, callToActionBig, imageMobile1, imageDesktop1, urlDesktop1, callToAction1, imageMobile2, imageDesktop2, urlDesktop2, callToAction2, imageMobile3, imageDesktop3, urlDesktop3, callToAction3, imageMobile4, imageDesktop4, urlDesktop4, callToAction4)
   return (
     <section className={styles.grid}>
       <div className={styles.grid__section}>
-        <div className={styles['grid__item--large']}>
-          <a href="#">
-            <img src="https://picsum.photos/500/800" alt="placeholder" />
-          </a>
-        </div>
+        <GridElement url={urlDesktopBig} imageDesktop={imageDesktopBig} imageMobile={imageMobileBig} callToAction={callToActionBig} type='large' />
       </div>
       <div className={styles.grid__section}>
-        <div className={styles['grid__item']}>
-          <a href="#">
-            <img src="https://picsum.photos/500/400" alt="placeholder" />
-          </a>
-        </div>
-        <div className={styles['grid__item']}>
-          <a href="#">
-            <img src="https://picsum.photos/500/400" alt="placeholder" />
-          </a>
-        </div>
+        <GridElement url={urlDesktop1} imageDesktop={imageDesktop1} imageMobile={imageMobile1} callToAction={callToAction1} type='small' />
+        <GridElement url={urlDesktop2} imageDesktop={imageDesktop2} imageMobile={imageMobile2} callToAction={callToAction2} type='mid' />
       </div>
       <div className={styles.grid__section}>
-        <div className={styles['grid__item']}>
-          <a href="#">
-            <img src="https://picsum.photos/500/400" alt="placeholder" />
-          </a>
-        </div>
-        <div className={styles['grid__item']}>
-          <a href="#">
-            <img src="https://picsum.photos/500/400" alt="placeholder" />
-          </a>
-        </div>
+        <GridElement url={urlDesktop3} imageDesktop={imageDesktop3} imageMobile={imageMobile3} callToAction={callToAction3} type='mid' />
+        <GridElement url={urlDesktop4} imageDesktop={imageDesktop4} imageMobile={imageMobile4} callToAction={callToAction4} type='small' />
       </div>
     </section>
   )

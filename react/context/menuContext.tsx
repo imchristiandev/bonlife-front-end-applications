@@ -17,7 +17,6 @@ const MenuProvider: React.FC = ({ children }) => {
   const [currentMenu, setCurrentMenu] = useState(null)
   const [completeMenu, setCompleteMenu] = useState(null)
   const [breadcrumb, setBreadcrumb] = useState(['root'])
-  const [desktopDistribution, setDesktopDistribution] = useState('')
 
   useEffect(() => {
     if (data) {
@@ -50,8 +49,7 @@ const MenuProvider: React.FC = ({ children }) => {
     mobileMenuIconSize,
     mobileMenuItemsBehavior,
     mobileTitle,
-    mobileMenuType,
-    desktopDistribution
+    mobileMenuType
   }
 
   const methodGroup = {
@@ -62,8 +60,7 @@ const MenuProvider: React.FC = ({ children }) => {
     setMobileMenuIconSize,
     setMobileMenuItemsBehavior,
     setMobileTitle,
-    setMobileMenuType,
-    setDesktopDistribution
+    setMobileMenuType
   }
 
   return <MenuContext.Provider value={{

@@ -1,37 +1,105 @@
 .grid {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  gap: 8px;
 }
 .grid__section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: calc((100% / 3) - (40px / 3));
+  gap: 8px;
+  width: 100%;
 }
 .grid__item,
+.grid__item--small,
+.grid__item--mid,
 .grid__item--large {
   display: flex;
   justify-content: center;
   overflow: hidden;
-  padding-bottom: calc(75% - 10px);
   position: relative;
-  width: 100%;
-
-}
-
-.grid__item--large {
-  padding-bottom: 150%;
-}
-
-.grid__item img,
-.grid__item--large img {
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
   width: 100%;
 }
 
 .grid__item a,
+.grid__item--small a,
+.grid__item--mid a,
 .grid__item--large a {
   width: 100%;
+}
+
+.grid h2 {
+  align-items: center;
+  background-color: black;
+  border-right: none;
+  border: 1px solid white;
+  bottom: 20px;
+  color: white;
+  display: flex;
+  font-size: 24px;
+  gap: 24px;
+  height: 52px;
+  justify-content: center;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  width: 240px;
+}
+
+.grid__item img,
+.grid__item--small img,
+.grid__item--mid img,
+.grid__item--large img {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .grid__section {
+    width: calc((50% - 4px));
+  }
+
+  .grid__section:first-child {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .grid__section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: calc((100% / 3) - (16px / 3));
+  }
+
+
+
+  .grid__item,
+  .grid__item--small,
+  .grid__item--mid,
+  .grid__item--large {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  }
+  .grid__item--small {
+    padding-bottom: calc(90% - 4px);
+  }
+
+  .grid__item--mid {
+    padding-bottom: calc(60% - 4px);
+  }
+
+  .grid__item--large {
+    padding-bottom: 150%;
+  }
+
+  .grid__item img,
+  .grid__item--small img,
+  .grid__item--mid img,
+  .grid__item--large img {
+    object-fit: cover;
+    position: absolute;
+  }
 }
