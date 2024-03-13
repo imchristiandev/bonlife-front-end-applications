@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import MenuContext from '../../../../context/menuContext'
 import { FirstLevelMenu } from './FirstLevelMenu'
-import { LoadingDesktop } from './LoadingDesktop';
-import { useRuntime } from 'vtex.render-runtime'
+import { LoadingDesktop } from './LoadingDesktop'
 
 
 
@@ -13,16 +12,10 @@ export const MegaMenuDesktop = () => {
     loading,
   } = useContext(MenuContext)
 
-  const { navigate } = useRuntime()
-
-  // Effects
-
   // Methods
   const handleNavigation = (slug: string) => {
     const newSlug = slug.startsWith('/') ? slug : `/${slug}`
-    navigate({
-      to: `${newSlug}/`,
-    })
+    window.location.href =(window.location.origin + newSlug)
   }
 
   return (
