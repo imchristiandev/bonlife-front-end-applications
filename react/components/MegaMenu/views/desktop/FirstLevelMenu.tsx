@@ -39,9 +39,11 @@ export const FirstLevelMenu = ({
           className={handles['desktop__container--firstLevelItem']}
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
-          onClick={() => { handleNavigation(item?.slug) }}
         >
-          <button className={`bn bg-transparent pa0 ma0 lh-solid pointer`}>
+          <button
+            className={`bn bg-transparent pa0 ma0 lh-solid pointer`}
+            onClick={() => { handleNavigation(item?.slug) }}
+          >
             <p className={handles['container__firstLevelItem--title']}>
               {item?.name}
             </p>
