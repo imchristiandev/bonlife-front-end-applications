@@ -54,11 +54,11 @@ const ProductCard = ({ skuID, setTotal, selected }: any) => {
     }
     setTimeout(() => {
       if (productData && !loading) {
-        const elements = document.querySelectorAll('.bonlifeco-front-end-applications-0-x-suggested__complements--products-child');
+        const elements = document.querySelectorAll('.bonlifeus-front-end-applications-0-x-suggested__complements--products-child');
         elements.forEach((element) => {
           const paragraph: any = element.querySelector('small');
           if (paragraph && paragraph.textContent.toLowerCase().includes('sin stock')) {
-            const deleteButton: any = element.querySelector('.bonlifeco-front-end-applications-0-x-complements__products--delete');
+            const deleteButton: any = element.querySelector('.bonlifeus-front-end-applications-0-x-complements__products--delete');
             if (deleteButton) {
               deleteButton.click();
             }

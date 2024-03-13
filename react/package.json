@@ -18,7 +18,6 @@
     "@vtex/test-tools": "^3.3.2",
     "@vtex/tsconfig": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.5",
-    "bonlifeco.front-end-applications": "https://menu2--bonlifeco.myvtex.com/_v/private/typings/linked/v1/bonlifeco.front-end-applications@0.1.0+build1706409481/public/@types/bonlifeco.front-end-applications",
     "graphql": "^14.6.0",
     "typescript": "3.9.7",
     "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.1/public/@types/vtex.css-handles",
